@@ -7,6 +7,11 @@ import RoutesList from "./RoutesList";
 
 const DEFAULT_DOGS = ["Duke", "Perry", "Whiskey"];
 
+/**
+ * App: renders Nav and RoutesList
+ *
+ */
+
 function App() {
   return (
     <div className="App">

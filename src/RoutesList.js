@@ -3,6 +3,11 @@ import DogDetails from "./DogDetails";
 import Dogs from "./Dogs";
 import { Route, Routes, Navigate, Link } from "react-router-dom";
 
+/**
+ * List of routes to access from website
+ *
+ */
+
 function RoutesList() {
   return (
     <Routes>
