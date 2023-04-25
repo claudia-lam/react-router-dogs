@@ -1,49 +1,34 @@
-import axios from "axios";
 import { useState } from "react";
-
-async function getDogs() {
-  const response = await axios.get("http://localhost:5001/dogs");
-  const data = response.data;
-  console.log("DATA", data);
-  return data;
-}
+import { getDogs } from "./api";
+import { Link } from "react-router-dom";
+import("./Dogs.css");
 
 function Dogs() {
   const [dogs, setDogs] = useState(null);
+  const [dogsFound, setDogsFound] = useState(false);
 
+  // CALLING POPULATE DOGS TWICE
   async function populateDogs() {
     const response = await getDogs();
+    setDogsFound(true);
     setDogs(response);
   }
 
-  // return (
-  //   <div className="Madlibs">
-  //     {formFilled ? (
-  //       <div className="MadlibsResult">
-  //         <h1>Your Beautiful Creation!</h1>
-  //         <MadLibsStory MadlibsText={template} WordsToAdd={filledWords} />
-  //       </div>
-  //     ) : (
-  //       <div className="FormShowing">
-  //         <Title />
-  //         <MadlibsForm create={create} prompts={prompts} />
-  //       </div>
-  //     )}
-  //   </div>
-  // );
+  if (dogsFound !== true) {
+    populateDogs();
+    return <div>Loading pups......</div>;
+  }
 
-  populateDogs();
   return (
-    <div>
-      {dogs ? (
-        <div>
-          {dogs.map((dog) => (
-            <p>{dog.name}</p>
-          ))}
+    <div className="Dogs">
+      {dogs.map((dog, i) => (
+        <div className="dog" key={i}>
+          <p>
+            <Link to={`/dogs/${dog.name}`}>Name: {dog.name}</Link>
+          </p>
+          <img className="dogPic" src={`${dog.src}.jpg`}></img>
         </div>
-      ) : (
-        <div></div>
-      )}
+      ))}
     </div>
   );
 }

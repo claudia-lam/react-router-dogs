@@ -9,7 +9,7 @@ function Nav({ dogs }) {
       </li>
       {dogs.map((dog, i) => (
         <li key={i}>
-          <Link to={`/${dog}`}>{dog}</Link>
+          <Link to={`/dogs/${dog}`}>{dog}</Link>
         </li>
       ))}
     </ul>

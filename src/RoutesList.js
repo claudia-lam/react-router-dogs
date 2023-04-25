@@ -1,17 +1,13 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import Duke from "./Duke";
-import Perry from "./Perry";
-import Whiskey from "./Whiskey";
+import DogDetails from "./DogDetails";
 import Dogs from "./Dogs";
+import { Route, Routes, Navigate, Link } from "react-router-dom";
 
 function RoutesList() {
   return (
     <Routes>
-      <Route path="/duke" element={<Duke />} />
-      <Route path="/perry" element={<Perry />} />
-      <Route path="/perry" element={<Whiskey />} />
       <Route path="/dogs" element={<Dogs />} />
+      <Route path="/dogs/:name" element={<DogDetails />} />
       <Route path="*" element={<Navigate to="/dogs" />} />
     </Routes>
   );
